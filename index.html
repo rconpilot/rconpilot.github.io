@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abol — Minecraft × AI Tooling</title>
+<meta name="description" content="Plugins and tools for Minecraft servers and AI workflows — built in the open by Abol.">
+<style>
+  :root{
+    --bg:#0b0e14; --panel:#12161f; --panel2:#161b26; --line:#232a38;
+    --text:#e6eaf2; --muted:#9aa7ba; --accent:#4cc2ff; --accent2:#7ee0b8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.6}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  header{padding:72px 0 40px;text-align:center}
+  .badge{display:inline-block;border:1px solid var(--line);background:var(--panel);color:var(--muted);
+    padding:4px 14px;border-radius:999px;font-size:13px;letter-spacing:.04em}
+  h1{font-size:52px;font-weight:700;margin:18px 0 6px;letter-spacing:-.01em}
+  h1 .accent{color:var(--accent)}
+  .tagline{font-size:20px;color:var(--text)}
+  .sub{color:var(--muted);max-width:640px;margin:14px auto 0}
+  .cta{margin-top:26px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-block;padding:10px 22px;border-radius:10px;font-weight:600;border:1px solid var(--line);background:var(--panel2);color:var(--text)}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#06121c}
+  .btn:hover{text-decoration:none;filter:brightness(1.1)}
+  section{padding:28px 0}
+  h2{font-size:26px;margin-bottom:6px}
+  .secsub{color:var(--muted);margin-bottom:22px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+  .card img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:#000}
+  .card .body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .card h3{font-size:20px}
+  .card p{color:var(--muted);font-size:15px;flex:1}
+  .meta{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:2px 10px}
+  .chip.ver{color:var(--accent2);border-color:#234636}
+  .links{display:flex;gap:14px;font-size:14px;font-weight:600}
+  .strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:6px}
+  .mini{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+  .mini h3{font-size:16px;margin-bottom:4px}
+  .mini p{color:var(--muted);font-size:14px}
+  footer{border-top:1px solid var(--line);margin-top:40px;padding:26px 0 40px;color:var(--muted);font-size:14px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="badge">BUILT IN THE OPEN · GITHUB</span>
+    <h1>Abol<span class="accent">.</span></h1>
+    <div class="tagline">Minecraft × AI Tooling</div>
+    <p class="sub">Plugins and tools for Minecraft servers and AI workflows — real software,
+      tested end-to-end, released in the open. No demos, no vaporware.</p>
+    <div class="cta">
+      <a class="btn primary" href="https://github.com/dlkhwshabwlfdl-web">GitHub profile</a>
+      <a class="btn" href="https://github.com/dlkhwshabwlfdl-web/LiveMarket/releases/latest">Latest release</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>Featured projects</h2>
+    <p class="secsub">The two flagships — a living market for survival servers, and an AI copilot for Paper servers.</p>
+    <div class="grid">
+
+      <div class="card">
+        <img src="livemarket-shop.png" alt="LiveMarket shop GUI, captured in game">
+        <div class="body">
+          <h3>LiveMarket</h3>
+          <p>A Paper plugin that turns a server shop into a living market: prices move with real
+             supply and demand, saturate against farming, and drift back to base over time.
+             Chest GUI, price alerts, MiniMessage throughout, PlaceholderAPI support.</p>
+          <div class="meta"><span class="chip ver">v0.3.0</span><span class="chip">Java 21</span><span class="chip">Paper 1.21</span><span class="chip">MIT</span></div>
+          <div class="links">
+            <a href="https://github.com/dlkhwshabwlfdl-web/LiveMarket">Repository</a>
+            <a href="https://github.com/dlkhwshabwlfdl-web/LiveMarket/releases/tag/v0.3.0">Release v0.3.0</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="studio.png" alt="PaperPilot Studio overview screen with live server data">
+        <div class="body">
+          <h3>PaperPilot + Studio</h3>
+          <p>An MCP server that lets AI agents run a Paper server safely — tiered tools, a command
+             allowlist and a full audit log — plus Studio, its native Windows app with a Fluent
+             design and a copilot that drafts actions for your approval before running them.</p>
+          <div class="meta"><span class="chip ver">Studio 1.20.0</span><span class="chip">TypeScript</span><span class="chip">MCP</span><span class="chip">Electron</span></div>
+          <div class="links">
+            <a href="https://github.com/dlkhwshabwlfdl-web/PaperPilot">Repository</a>
+            <a href="https://github.com/dlkhwshabwlfdl-web/PaperPilot/releases/tag/v1.20.0">Studio release</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>More projects</h2>
+    <p class="secsub">Everything else lives on GitHub — frameworks, bots and Blockbench tooling.</p>
+    <div class="strip">
+      <div class="mini">
+        <h3><a href="https://github.com/dlkhwshabwlfdl-web/ModelFramework">ModelFramework</a></h3>
+        <p>A framework for working with custom models in Minecraft plugins.</p>
+      </div>
+      <div class="mini">
+        <h3><a href="https://github.com/dlkhwshabwlfdl-web/MusicBot">MusicBot</a></h3>
+        <p>Discord music bot with session volume control, built for community servers.</p>
+      </div>
+      <div class="mini">
+        <h3><a href="https://github.com/dlkhwshabwlfdl-web/Blockbench-Models-Toolkit-">Blockbench Models Toolkit</a></h3>
+        <p>Tooling for Blockbench model workflows.</p>
+      </div>
+      <div class="mini">
+        <h3><a href="https://github.com/dlkhwshabwlfdl-web/BlockBench-Desktop-Ai-Agent-MCP">BlockBench AI Agent MCP</a></h3>
+        <p>An MCP bridge that lets AI agents work inside Blockbench Desktop.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Abol · <a href="https://github.com/dlkhwshabwlfdl-web">github.com/dlkhwshabwlfdl-web</a> ·
+    Screenshots on this page are captured from the real running software.
+  </footer>
+
+</div>
+</body>
+</html>
