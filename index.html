@@ -1,67 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>rconpilot — Minecraft × AI Tooling</title>
 <meta name="description" content="Plugins and tools for Minecraft servers and AI workflows — built in the open by rconpilot.">
+<script>
+  /* Set the theme before first paint: saved choice wins, dark is the default. */
+  (function(){try{var t=localStorage.getItem('rconpilot-theme');if(t!=='light'&&t!=='dark')t='dark';document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='dark';}})();
+</script>
 <style>
-  :root{
+  :root, :root[data-theme="light"]{
     --bg:#fdfdfa; --ink:#141414; --muted:#5c5c55;
-    --yellow:#ffd21f; --yellow-soft:#fff3bf; --card:#ffffff; --line:#141414;
+    --yellow:#ffd21f; --yellow-soft:#fff3bf; --card:#ffffff; --surface:#ffffff;
+    --chip-bg:#ffffff; --line:#141414; --shadow:#141414;
+  }
+  :root[data-theme="dark"]{
+    --bg:#131315; --ink:#f4f1e6; --muted:#a3a093;
+    --yellow:#ffd21f; --yellow-soft:#2c270e; --card:#1e1e22; --surface:#1e1e22;
+    --chip-bg:#26262c; --line:#f4f1e6; --shadow:#ffd21f;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  body{background:var(--bg);color:var(--ink);font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.6}
+  body{background:var(--bg);color:var(--ink);font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.6;
+    transition:background-color .35s ease,color .35s ease}
   a{color:var(--ink)}
   .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
   header{padding:76px 0 44px;text-align:center}
-  .badge{display:inline-block;background:var(--yellow);border:2px solid var(--line);color:var(--ink);
+  .badge{display:inline-block;background:var(--yellow);border:2px solid var(--line);color:#141414;
     padding:4px 16px;border-radius:999px;font-size:13px;font-weight:700;letter-spacing:.05em;
-    box-shadow:3px 3px 0 var(--line)}
+    box-shadow:3px 3px 0 var(--shadow);transition:background-color .35s ease,border-color .35s ease,box-shadow .35s ease}
   h1{font-size:58px;font-weight:800;margin:22px 0 4px;letter-spacing:-.02em}
   h1 .dot{color:var(--yellow);-webkit-text-stroke:2px var(--line)}
   .tagline{font-size:21px;font-weight:600}
-  .sub{color:var(--muted);max-width:620px;margin:14px auto 0}
+  .sub{color:var(--muted);max-width:620px;margin:14px auto 0;transition:color .35s ease}
   .cta{margin-top:30px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
   .btn{display:inline-block;padding:12px 26px;border-radius:12px;font-weight:700;font-size:16px;
-    border:2px solid var(--line);text-decoration:none;transition:transform .08s,box-shadow .08s}
-  .btn.primary{background:var(--yellow);color:var(--ink);box-shadow:5px 5px 0 var(--line)}
-  .btn.ghost{background:#fff;color:var(--ink);box-shadow:5px 5px 0 var(--line)}
-  .btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--line);text-decoration:none}
-  .btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--line)}
+    border:2px solid var(--line);text-decoration:none;transition:transform .08s,box-shadow .08s,background-color .35s ease,color .35s ease,border-color .35s ease}
+  .btn.primary{background:var(--yellow);color:#141414;box-shadow:5px 5px 0 var(--shadow)}
+  .btn.ghost{background:var(--surface);color:var(--ink);box-shadow:5px 5px 0 var(--shadow)}
+  .btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--shadow);text-decoration:none}
+  .btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--shadow)}
   section{padding:30px 0}
   h2{font-size:28px;font-weight:800;margin-bottom:6px}
   h2 .hl{background:linear-gradient(transparent 62%,var(--yellow) 62%)}
-  .secsub{color:var(--muted);margin-bottom:24px}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:26px}
+  :root[data-theme="dark"] h2 .hl{background:linear-gradient(transparent 62%,rgba(255,210,31,.42) 62%)}
+  .secsub{color:var(--muted);margin-bottom:24px;transition:color .35s ease}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:26px}
   .card{background:var(--card);border:2px solid var(--line);border-radius:18px;overflow:hidden;
-    display:flex;flex-direction:column;box-shadow:8px 8px 0 var(--line);transition:transform .1s,box-shadow .1s}
-  .card:hover{transform:translate(-3px,-3px);box-shadow:12px 12px 0 var(--line)}
+    display:flex;flex-direction:column;box-shadow:8px 8px 0 var(--shadow);transition:transform .1s,box-shadow .1s,background-color .35s ease,border-color .35s ease}
+  .card:hover{transform:translate(-3px,-3px);box-shadow:12px 12px 0 var(--shadow)}
   .card img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;border-bottom:2px solid var(--line);background:#000}
+  .card .banner{aspect-ratio:16/9;background:#101014;border-bottom:2px solid var(--line);
+    display:flex;align-items:center;justify-content:center}
+  .card .banner img{width:auto;height:62%;aspect-ratio:auto;object-fit:contain;border-bottom:none;background:transparent}
   .card .body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:9px;flex:1}
   .card h3{font-size:21px;font-weight:800}
-  .card p{color:var(--muted);font-size:15px;flex:1}
+  .card p{color:var(--muted);font-size:15px;flex:1;transition:color .35s ease}
   .meta{display:flex;gap:8px;flex-wrap:wrap}
-  .chip{font-size:12px;font-weight:600;border:1.5px solid var(--line);border-radius:999px;padding:2px 11px;background:#fff}
-  .chip.ver{background:var(--yellow)}
+  .chip{font-size:12px;font-weight:600;border:1.5px solid var(--line);border-radius:999px;padding:2px 11px;background:var(--chip-bg);
+    transition:background-color .35s ease,border-color .35s ease}
+  .chip.ver{background:var(--yellow);color:#141414}
   .links{display:flex;gap:16px;font-size:14px;font-weight:700}
   .links a{text-decoration:none;border-bottom:3px solid var(--yellow)}
   .links a:hover{background:var(--yellow-soft)}
   .strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
-  .mini{background:#fff;border:2px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:5px 5px 0 var(--line)}
+  .mini{background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:5px 5px 0 var(--shadow);
+    transition:background-color .35s ease,border-color .35s ease,box-shadow .35s ease}
   .mini h3{font-size:16px;margin-bottom:4px}
   .mini h3 a{text-decoration:none}
-  .mini p{color:var(--muted);font-size:14px}
+  .mini p{color:var(--muted);font-size:14px;transition:color .35s ease}
   .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:22px;margin-top:4px}
   .stat{background:var(--yellow-soft);border:2px solid var(--line);border-radius:16px;padding:20px;
-    text-align:center;box-shadow:6px 6px 0 var(--line)}
-  .stat:nth-child(odd){background:#fff}
+    text-align:center;box-shadow:6px 6px 0 var(--shadow);transition:background-color .35s ease,border-color .35s ease,box-shadow .35s ease}
+  .stat:nth-child(odd){background:var(--surface)}
   .stat .num{font-size:40px;font-weight:800;line-height:1.1}
-  .stat .lab{color:var(--muted);font-size:14px;font-weight:600}
-  footer{border-top:2px solid var(--line);margin-top:44px;padding:26px 0 42px;color:var(--muted);font-size:14px;text-align:center}
+  .stat .lab{color:var(--muted);font-size:14px;font-weight:600;transition:color .35s ease}
+  footer{border-top:2px solid var(--line);margin-top:44px;padding:26px 0 42px;color:var(--muted);font-size:14px;text-align:center;
+    transition:color .35s ease,border-color .35s ease}
+
+  /* Theme toggle — chunky neo-brutalist pill switch, fixed top-right, always visible */
+  .theme-toggle{position:fixed;top:18px;right:18px;z-index:60;width:78px;height:42px;border-radius:999px;
+    background:var(--surface);border:2.5px solid var(--line);box-shadow:4px 4px 0 var(--shadow);
+    cursor:pointer;padding:0;transition:transform .08s,box-shadow .08s,background-color .35s ease,border-color .35s ease}
+  .theme-toggle:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--shadow)}
+  .theme-toggle:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--shadow)}
+  .theme-toggle:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+  .theme-toggle .tt-ico{position:absolute;top:50%;width:19px;height:19px;transform:translateY(-50%);
+    color:var(--ink);pointer-events:none;transition:color .35s ease}
+  .theme-toggle .tt-sun{left:10px}
+  .theme-toggle .tt-moon{right:10px}
+  .theme-toggle .tt-knob{position:absolute;top:50%;left:4px;width:30px;height:30px;border-radius:50%;
+    background:var(--yellow);border:2.5px solid #141414;transform:translate(0,-50%);
+    transition:transform .32s cubic-bezier(.6,-0.1,.2,1.3)}
+  :root[data-theme="dark"] .theme-toggle .tt-knob{transform:translate(38px,-50%)}
+  @media (prefers-reduced-motion:reduce){
+    body,.card,.btn,.badge,.mini,.stat,.chip,.theme-toggle,.theme-toggle .tt-knob{transition:none}
+  }
+  @media (max-width:480px){
+    h1{font-size:44px}
+    header{padding:70px 0 36px}
+    .theme-toggle{top:12px;right:12px}
+  }
 </style>
 </head>
 <body>
+<button class="theme-toggle" id="themeToggle" type="button" role="switch" aria-checked="true" aria-label="Dark theme">
+  <svg class="tt-ico tt-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="currentColor" stroke="none"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5 5l1.8 1.8M17.2 17.2L19 19M19 5l-1.8 1.8M6.8 17.2L5 19"/></svg>
+  <svg class="tt-ico tt-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.6 14.2A8.8 8.8 0 1 1 9.8 3.4a7.2 7.2 0 1 0 10.8 10.8z"/></svg>
+  <span class="tt-knob"></span>
+</button>
 <div class="wrap">
 
   <header>
@@ -72,14 +119,29 @@
       tested end-to-end, released in the open. No demos, no vaporware.</p>
     <div class="cta">
       <a class="btn primary" href="https://github.com/rconpilot">GitHub profile</a>
-      <a class="btn ghost" href="https://github.com/rconpilot/LiveMarket/releases/latest">Latest release</a>
+      <a class="btn ghost" href="https://github.com/rconpilot/NexLink/releases/latest">Latest release</a>
     </div>
   </header>
 
   <section>
     <h2><span class="hl">Featured projects</span></h2>
-    <p class="secsub">A living market for survival servers, an AI copilot for Paper servers, and a framework that turns custom models into interactive world objects.</p>
+    <p class="secsub">A phone-internet tunnel for your PC, a living market for survival servers, an AI copilot for Paper servers, and a framework that turns custom models into interactive world objects.</p>
     <div class="grid">
+
+      <div class="card">
+        <div class="banner"><img src="nexlink-logo.png" alt="NexLink logo"></div>
+        <div class="body">
+          <h3>NexLink</h3>
+          <p>Share your phone's internet — VPN included — with your PC over USB. A Rust engine
+             and a virtual network adapter give the PC a real connection through the phone,
+             PdaNet+-style — never a proxy.</p>
+          <div class="meta"><span class="chip ver">v0.3.0</span><span class="chip">Rust</span><span class="chip">Windows · Android</span><span class="chip">USB tethering</span></div>
+          <div class="links">
+            <a href="https://github.com/rconpilot/NexLink">Repository</a>
+            <a href="https://github.com/rconpilot/NexLink/releases/tag/v0.3.0">Release v0.3.0</a>
+          </div>
+        </div>
+      </div>
 
       <div class="card">
         <img src="livemarket-shop.png" alt="LiveMarket shop GUI, captured in game">
@@ -103,10 +165,10 @@
           <p>An MCP server that lets AI agents run a Paper server safely — tiered tools, a command
              allowlist and a full audit log — plus Studio, its native Windows app with a Fluent
              design and a copilot that drafts actions for your approval before running them.</p>
-          <div class="meta"><span class="chip ver">Studio 1.20.0</span><span class="chip">TypeScript</span><span class="chip">MCP</span><span class="chip">Electron</span></div>
+          <div class="meta"><span class="chip ver">Studio 2.1.0</span><span class="chip">TypeScript</span><span class="chip">MCP</span><span class="chip">Tauri</span></div>
           <div class="links">
             <a href="https://github.com/rconpilot/PaperPilot">Repository</a>
-            <a href="https://github.com/rconpilot/PaperPilot/releases/tag/v1.20.0">Studio release</a>
+            <a href="https://github.com/rconpilot/PaperPilot/releases/tag/studio-tauri-v2.1.0">Studio 2.1.0 release</a>
           </div>
         </div>
       </div>
@@ -151,9 +213,9 @@
     <h2><span class="hl">By the numbers</span></h2>
     <p class="secsub">Small numbers, real software — everything below shipped and verified.</p>
     <div class="stats">
-      <div class="stat"><div class="num">10</div><div class="lab">Public repositories</div></div>
-      <div class="stat"><div class="num">10</div><div class="lab">Stars earned</div></div>
-      <div class="stat"><div class="num">6</div><div class="lab">Releases shipped</div></div>
+      <div class="stat"><div class="num">11</div><div class="lab">Public repositories</div></div>
+      <div class="stat"><div class="num">14</div><div class="lab">Stars earned</div></div>
+      <div class="stat"><div class="num">5</div><div class="lab">Languages in the toolbox</div></div>
       <div class="stat"><div class="num">3</div><div class="lab">Followers</div></div>
     </div>
   </section>
@@ -164,5 +226,18 @@
   </footer>
 
 </div>
+<script>
+  (function(){
+    var btn=document.getElementById('themeToggle');
+    function sync(){btn.setAttribute('aria-checked',document.documentElement.dataset.theme==='dark'?'true':'false');}
+    sync();
+    btn.addEventListener('click',function(){
+      var next=document.documentElement.dataset.theme==='dark'?'light':'dark';
+      document.documentElement.dataset.theme=next;
+      try{localStorage.setItem('rconpilot-theme',next);}catch(e){}
+      sync();
+    });
+  })();
+</script>
 </body>
 </html>
