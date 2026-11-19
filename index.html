@@ -42,17 +42,18 @@
   .btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--shadow)}
   section{padding:30px 0}
   h2{font-size:28px;font-weight:800;margin-bottom:6px}
-  h2 .hl{background:linear-gradient(transparent 62%,var(--yellow) 62%)}
-  :root[data-theme="dark"] h2 .hl{background:linear-gradient(transparent 62%,rgba(255,210,31,.42) 62%)}
+  /* Crafted underline: a tapered marker swash in brand yellow with a hard offset
+     shadow in ink — the site's signature shadow motif, drawn as one SVG stroke. */
+  h2 .hl{padding-bottom:.26em;background-repeat:no-repeat;background-position:0 100%;background-size:100% .30em;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 308 19' preserveAspectRatio='none'%3E%3Cpath d='M8 11 Q155 3.5 302 9.5 Q155 17.5 8 14.5 Q5.5 12.8 8 11 Z' fill='%23141414'/%3E%3Cpath d='M3 8 Q150 0.5 297 6.5 Q150 14.5 3 11.5 Q0.5 9.8 3 8 Z' fill='%23ffd21f'/%3E%3C/svg%3E")}
+  :root[data-theme="dark"] h2 .hl{
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 308 19' preserveAspectRatio='none'%3E%3Cpath d='M8 11 Q155 3.5 302 9.5 Q155 17.5 8 14.5 Q5.5 12.8 8 11 Z' fill='%23f4f1e6' fill-opacity='.38'/%3E%3Cpath d='M3 8 Q150 0.5 297 6.5 Q150 14.5 3 11.5 Q0.5 9.8 3 8 Z' fill='%23ffd21f'/%3E%3C/svg%3E")}
   .secsub{color:var(--muted);margin-bottom:24px;transition:color .35s ease}
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:26px}
   .card{background:var(--card);border:2px solid var(--line);border-radius:18px;overflow:hidden;
     display:flex;flex-direction:column;box-shadow:8px 8px 0 var(--shadow);transition:transform .1s,box-shadow .1s,background-color .35s ease,border-color .35s ease}
   .card:hover{transform:translate(-3px,-3px);box-shadow:12px 12px 0 var(--shadow)}
   .card img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;border-bottom:2px solid var(--line);background:#000}
-  .card .banner{aspect-ratio:16/9;background:#101014;border-bottom:2px solid var(--line);
-    display:flex;align-items:center;justify-content:center}
-  .card .banner img{width:auto;height:62%;aspect-ratio:auto;object-fit:contain;border-bottom:none;background:transparent}
   .card .body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:9px;flex:1}
   .card h3{font-size:21px;font-weight:800}
   .card p{color:var(--muted);font-size:15px;flex:1;transition:color .35s ease}
@@ -125,11 +126,11 @@
 
   <section>
     <h2><span class="hl">Featured projects</span></h2>
-    <p class="secsub">A phone-internet tunnel for your PC, a living market for survival servers, an AI copilot for Paper servers, and a framework that turns custom models into interactive world objects.</p>
+    <p class="secsub">A phone-internet tunnel for your PC, a living market for survival servers, an AI copilot for Paper servers, a framework that turns custom models into interactive world objects, and a music player for voice-chat groups.</p>
     <div class="grid">
 
       <div class="card">
-        <div class="banner"><img src="nexlink-logo.png" alt="NexLink logo"></div>
+        <img src="nexlink-card.png" alt="NexLink logo">
         <div class="body">
           <h3>NexLink</h3>
           <p>Share your phone's internet — VPN included — with your PC over USB. A Rust engine
@@ -187,17 +188,27 @@
         </div>
       </div>
 
+      <div class="card">
+        <img src="musicbot-demo.gif" alt="MusicBot demo — a song playing inside a Minecraft voice chat group">
+        <div class="body">
+          <h3>MusicBot</h3>
+          <p>A Spigot/Paper plugin that plays music through Simple Voice Chat groups — a
+             Discord-style music bot, but inside Minecraft. Queue with skip, pause and resume,
+             session volume control, and a BossBar now-playing display with progress.</p>
+          <div class="meta"><span class="chip ver">★ 3 · most starred</span><span class="chip">Java 21</span><span class="chip">Spigot / Paper</span><span class="chip">Simple Voice Chat</span></div>
+          <div class="links">
+            <a href="https://github.com/rconpilot/MusicBot">Repository</a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <section>
     <h2><span class="hl">More projects</span></h2>
-    <p class="secsub">Everything else lives on GitHub — bots and Blockbench tooling.</p>
+    <p class="secsub">Everything else lives on GitHub — Blockbench tooling and experiments.</p>
     <div class="strip">
-      <div class="mini">
-        <h3><a href="https://github.com/rconpilot/MusicBot">MusicBot</a></h3>
-        <p>Discord music bot with session volume control, built for community servers.</p>
-      </div>
       <div class="mini">
         <h3><a href="https://github.com/rconpilot/Blockbench-Models-Toolkit-">Blockbench Models Toolkit</a></h3>
         <p>Tooling for Blockbench model workflows.</p>
