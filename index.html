@@ -61,6 +61,14 @@
   .chartbox img{width:100%;height:auto;display:block}
   .chartbox .cap{margin-top:14px;color:var(--muted);font-size:.92rem}
   .chartbox .cap a{color:var(--ink);font-weight:700}
+  .card{position:relative}
+  .card .links a.repo::after{content:"";position:absolute;inset:0}
+  .card .links a:not(.repo){position:relative;z-index:1}
+  .mini{position:relative}
+  .mini h3 a::after{content:"";position:absolute;inset:0}
+  .langline{margin-top:18px;color:var(--muted);line-height:1.9}
+  .langline .lang{color:var(--ink);font-weight:600;white-space:nowrap}
+  .langline .lang i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}
   .card .body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:9px;flex:1}
   .card h3{font-size:21px;font-weight:800}
   .card p{color:var(--muted);font-size:15px;flex:1;transition:color .35s ease}
@@ -145,7 +153,7 @@
              PdaNet+-style — never a proxy.</p>
           <div class="meta"><span class="chip ver">v0.3.1</span><span class="chip">Rust</span><span class="chip">Windows · Android</span><span class="chip">USB tethering</span></div>
           <div class="links">
-            <a href="https://github.com/rconpilot/NexLink">Repository</a>
+            <a class="repo" href="https://github.com/rconpilot/NexLink">Repository</a>
             <a href="https://github.com/rconpilot/NexLink/releases/tag/v0.3.1">Release v0.3.1</a>
           </div>
         </div>
@@ -160,7 +168,7 @@
              Chest GUI, price alerts, MiniMessage throughout, PlaceholderAPI support.</p>
           <div class="meta"><span class="chip ver">v0.4.0</span><span class="chip">Java 21</span><span class="chip">Paper 1.21</span><span class="chip">MIT</span></div>
           <div class="links">
-            <a href="https://github.com/rconpilot/LiveMarket">Repository</a>
+            <a class="repo" href="https://github.com/rconpilot/LiveMarket">Repository</a>
             <a href="https://github.com/rconpilot/LiveMarket/releases/tag/v0.4.0">Release v0.4.0</a>
           </div>
         </div>
@@ -175,7 +183,7 @@
              design and a copilot that drafts actions for your approval before running them.</p>
           <div class="meta"><span class="chip ver">Studio 2.1.0</span><span class="chip">TypeScript</span><span class="chip">MCP</span><span class="chip">Tauri</span></div>
           <div class="links">
-            <a href="https://github.com/rconpilot/PaperPilot">Repository</a>
+            <a class="repo" href="https://github.com/rconpilot/PaperPilot">Repository</a>
             <a href="https://github.com/rconpilot/PaperPilot/releases/tag/studio-tauri-v2.1.0">Studio 2.1.0 release</a>
           </div>
         </div>
@@ -190,7 +198,7 @@
              Crates, furniture, machines, doors: if it has a model, it can live in the world.</p>
           <div class="meta"><span class="chip ver">v1.1.0</span><span class="chip">Java 21</span><span class="chip">Paper 1.21</span><span class="chip">BetterModel</span></div>
           <div class="links">
-            <a href="https://github.com/rconpilot/ModelFramework">Repository</a>
+            <a class="repo" href="https://github.com/rconpilot/ModelFramework">Repository</a>
           </div>
         </div>
       </div>
@@ -204,7 +212,7 @@
              session volume control, and a BossBar now-playing display with progress.</p>
           <div class="meta"><span class="chip ver">★ 3 · most starred</span><span class="chip">Java 21</span><span class="chip">Spigot / Paper</span><span class="chip">Simple Voice Chat</span></div>
           <div class="links">
-            <a href="https://github.com/rconpilot/MusicBot">Repository</a>
+            <a class="repo" href="https://github.com/rconpilot/MusicBot">Repository</a>
           </div>
         </div>
       </div>
@@ -234,6 +242,16 @@
       <a href="https://github.com/rconpilot"><img src="https://ghchart.rshah.org/ffd21f/rconpilot" alt="rconpilot's GitHub contribution chart" loading="lazy"></a>
       <div class="cap">Live from <a href="https://github.com/rconpilot">github.com/rconpilot</a> — the chart updates itself.</div>
     </div>
+    <p class="langline">Languages across all repos:
+      <span class="lang"><i style="background:#e34c26"></i>HTML 66.0%</span> ·
+      <span class="lang"><i style="background:#3178c6"></i>TypeScript 18.8%</span> ·
+      <span class="lang"><i style="background:#f1e05a"></i>JavaScript 6.3%</span> ·
+      <span class="lang"><i style="background:#b07219"></i>Java 4.1%</span> ·
+      <span class="lang"><i style="background:#dea584"></i>Rust 3.5%</span> ·
+      <span class="lang"><i style="background:#a97bff"></i>Kotlin 0.5%</span> ·
+      <span class="lang"><i style="background:#563d7c"></i>CSS 0.5%</span> ·
+      <span class="lang"><i style="background:#3572a5"></i>Python 0.2%</span>
+    </p>
   </section>
 
   <section>
