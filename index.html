@@ -66,6 +66,14 @@
   .card .links a:not(.repo){position:relative;z-index:1}
   .mini{position:relative}
   .mini h3 a::after{content:"";position:absolute;inset:0}
+  .profile{display:flex;gap:18px;align-items:center;background:var(--card);border:2px solid var(--line);border-radius:18px;box-shadow:8px 8px 0 var(--shadow);padding:18px 22px;margin-bottom:34px;transition:background-color .35s ease,border-color .35s ease}
+  .profile img{width:84px;height:84px;border-radius:16px;border:2px solid var(--line);image-rendering:pixelated;background:#000;flex:none}
+  .profile .pname{font-size:1.35rem;font-weight:800;line-height:1.2}
+  .profile .pname span{color:var(--muted);font-weight:600;font-size:1.05rem}
+  .profile .pbio{color:var(--muted);margin-top:5px;line-height:1.55}
+  @media (max-width:480px){.profile{padding:14px 16px;gap:14px}.profile img{width:64px;height:64px}}
+  .langbar{display:flex;height:16px;border:2px solid var(--line);border-radius:999px;overflow:hidden;box-shadow:5px 5px 0 var(--shadow);margin-top:20px;background:var(--surface)}
+  .langbar span{display:block;height:100%}
   .langline{margin-top:18px;color:var(--muted);line-height:1.9}
   .langline .lang{color:var(--ink);font-weight:600;white-space:nowrap}
   .langline .lang i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}
@@ -128,6 +136,13 @@
 <div class="wrap">
 
   <header>
+    <div class="profile">
+      <img src="icon-512.png" alt="amirxht's GitHub avatar — a Minecraft skin">
+      <div>
+        <div class="pname">amirxht <span>@rconpilot · 3 followers</span></div>
+        <p class="pbio">Minecraft developer &amp; AI tooling builder — Paper plugins, custom model frameworks, and MCP servers that let AI agents create and run Minecraft content.</p>
+      </div>
+    </div>
     <span class="badge">BUILT IN THE OPEN · GITHUB</span>
     <h1>rconpilot<span class="dot">.</span></h1>
     <div class="tagline">Minecraft × AI Tooling</div>
@@ -241,6 +256,9 @@
     <div class="chartbox">
       <a href="https://github.com/rconpilot"><img src="https://ghchart.rshah.org/ffd21f/rconpilot" alt="rconpilot's GitHub contribution chart" loading="lazy"></a>
       <div class="cap">Live from <a href="https://github.com/rconpilot">github.com/rconpilot</a> — the chart updates itself.</div>
+    </div>
+    <div class="langbar" role="img" aria-label="Language share across all repos: TypeScript 55%, JavaScript 18.3%, Java 12%, Rust 10.2%, Kotlin 1.5%, CSS 1.4%, HTML 0.8%, Python 0.6%">
+      <span style="flex:55;background:#3178c6"></span><span style="flex:18.3;background:#f1e05a"></span><span style="flex:12;background:#b07219"></span><span style="flex:10.2;background:#dea584"></span><span style="flex:1.5;background:#a97bff"></span><span style="flex:1.4;background:#563d7c"></span><span style="flex:.8;background:#e34c26"></span><span style="flex:.6;background:#3572a5"></span>
     </div>
     <p class="langline">Languages across all repos (generated files excluded):
       <span class="lang"><i style="background:#3178c6"></i>TypeScript 55.0%</span> ·
