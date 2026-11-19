@@ -57,6 +57,10 @@
     display:flex;flex-direction:column;box-shadow:8px 8px 0 var(--shadow);transition:transform .1s,box-shadow .1s,background-color .35s ease,border-color .35s ease}
   .card:hover{transform:translate(-3px,-3px);box-shadow:12px 12px 0 var(--shadow)}
   .card img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;border-bottom:2px solid var(--line);background:#000}
+  .chartbox{background:var(--card);border:2px solid var(--line);border-radius:18px;box-shadow:8px 8px 0 var(--shadow);padding:22px;transition:background-color .35s ease,border-color .35s ease}
+  .chartbox img{width:100%;height:auto;display:block}
+  .chartbox .cap{margin-top:14px;color:var(--muted);font-size:.92rem}
+  .chartbox .cap a{color:var(--ink);font-weight:700}
   .card .body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:9px;flex:1}
   .card h3{font-size:21px;font-weight:800}
   .card p{color:var(--muted);font-size:15px;flex:1;transition:color .35s ease}
@@ -220,6 +224,15 @@
         <h3><a href="https://github.com/rconpilot/BlockBench-Desktop-Ai-Agent-MCP">BlockBench AI Agent MCP</a></h3>
         <p>An MCP bridge that lets AI agents work inside Blockbench Desktop.</p>
       </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="hl">Activity</span></h2>
+    <p class="secsub">GitHub contributions over the last year — every square is a day of building.</p>
+    <div class="chartbox">
+      <a href="https://github.com/rconpilot"><img src="https://ghchart.rshah.org/ffd21f/rconpilot" alt="rconpilot's GitHub contribution chart" loading="lazy"></a>
+      <div class="cap">Live from <a href="https://github.com/rconpilot">github.com/rconpilot</a> — the chart updates itself.</div>
     </div>
   </section>
 
